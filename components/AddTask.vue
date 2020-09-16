@@ -9,6 +9,7 @@
                         class="input is-info is-rounded"
                         type="text"
                         placeholder="Create new todo"
+                        @keyup.enter="addTask"
                 />
             </div>
             <div class="control column is-1">

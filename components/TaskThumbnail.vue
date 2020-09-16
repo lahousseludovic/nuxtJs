@@ -44,8 +44,7 @@ export default class extends Vue {
   }})task!: Task;
 
   checkTask() {
-    const newTask = new Task(this.task.description, !this.task.isDone);
-    this.$store.dispatch('updateTask', newTask)
+    this.$store.dispatch('updateTask', new Task(this.task.description, !this.task.isDone))
   }
 
   deleteTask() {

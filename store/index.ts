@@ -35,10 +35,13 @@ export const actions: ActionTree<RootState, RootState> = {
       commit('UPDATE_TASKS', tasks)
     }
   },
-  updateTask({ commit, getters }, newTask: Task) {
-    if (getters.taskById(newTask.id) === undefined) {
-      const tasks = getters.tasks.push(newTask)
-      commit('UPDATE_TASKS', tasks)
+  updateTask({ commit, getters }, updateTask: Task) {
+    const tasks: Task[] = getters.tasks;
+    for(let i = 0; i < tasks.length; i++) {
+      if (tasks[i].id === updateTask.id) {
+        tasks[i].isDone = updateTask.isDone;
+        commit('UPDATE_TASKS', tasks);
+      }
     }
   },
   deleteTask({ commit, getters }, taskId: string) {
